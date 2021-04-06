@@ -24,6 +24,13 @@ public class Process {
         priority=given_priority;
     }
 
+    Process()
+    {
+        id=1;
+        time= 2;
+        priority=3;
+    }
+
     @Override
     public String toString() {
         String str= "ID: "+ id + " time: "+ time+" priority: "+ priority;

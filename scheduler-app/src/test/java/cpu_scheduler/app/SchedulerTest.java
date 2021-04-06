@@ -3,6 +3,7 @@ package cpu_scheduler.app;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -15,6 +16,13 @@ public class SchedulerTest {
   
   //Queue to be filled with testing values
   LinkedList<Process> queue;
+  PrintWriter outputtest;
+
+  @BeforeAll
+  public void make_outputfile() throws FileNotFoundException{
+   outputtest= new PrintWriter("output_test.txt");
+  }
+
 
   @BeforeAll
   public void make_queue(){
@@ -37,7 +45,6 @@ public class SchedulerTest {
 
      //test
      System.out.println("Calling get_wait()");
-    PrintWriter outputtest= new PrintWriter("output_test.txt");
     final int actual_wait= Scheduler.get_wait(queue, outputtest ,  'f');
 
     //Assert
@@ -45,8 +52,34 @@ public class SchedulerTest {
     System.out.println("Finished get_wait() test");
   }
 
+  @Test
+  public void test_get_turn_around_time() throws FileNotFoundException{
+     //Arrange
+     final int expected_sum_turnaround= 58;
+
+     //test
+     System.out.println("Calling get_turn_around_time()");
+    final int actual_sum_turnaround= Scheduler.get_turn_around_time(queue, outputtest ,  'f');
+
+    //Assert
+    assertEquals(expected_sum_turnaround, actual_sum_turnaround);
+    System.out.println("Finished get_turn_around_time() test");
+  }
 
 
+  @Test
+  public void test_get_throughput() throws FileNotFoundException{
+     //Arrange
+     final int expected_total_time= 30;
+
+     //test
+     System.out.println("Calling get_throughput()");
+     final int actual_total_time= Scheduler.get_throughput(queue, outputtest ,  'f');
+
+    //Assert
+    assertEquals(expected_total_time, actual_total_time);
+    System.out.println("Finished get_throughput() test");
+  }
 
       @Test
     public void test_get_average() {    
