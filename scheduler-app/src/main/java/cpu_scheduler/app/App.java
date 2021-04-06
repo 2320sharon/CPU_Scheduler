@@ -39,6 +39,18 @@ public class App
  
    
   }
+
+public static void sort_queue(LinkedList<Process> process_queue)
+{
+  Collections.sort(process_queue, new Comparator<Process>() { 
+    @Override 
+    public int compare(Process p1, Process p2)
+     { return p1.priority - p2.priority ;
+      } } );
+
+      System.out.println("LinkedList (after sorting by priorty): " + process_queue);
+}
+
   public static void main( String[] args )throws IOException
   {
     //create the input queue
@@ -49,26 +61,21 @@ public class App
       PrintWriter outputFile= new PrintWriter("output.txt");
      
       Scheduler cpu_schedule= new Scheduler(); //do I need an object for this?
+
+      //FCFS test
+      cpu_schedule.print_queue(process_queue,outputFile,'f');
       cpu_schedule.get_wait(process_queue,outputFile,'f');
       cpu_schedule.get_turn_around_time(process_queue,outputFile,'f');
       cpu_schedule.get_throughput(process_queue,outputFile,'f');
+
+      //HPF test
+      App.sort_queue(process_queue);
+      cpu_schedule.print_queue(process_queue,outputFile,'h');
+      cpu_schedule.get_wait(process_queue,outputFile,'h');
+      cpu_schedule.get_turn_around_time(process_queue,outputFile,'h');
+      cpu_schedule.get_throughput(process_queue,outputFile,'h');
+
       
       outputFile.close();
-     /*
-      // Example 2 - Sorting LinkedList using Collection.sort() and Comparator in Java
-       Collections.sort(process_queue, new Comparator<Process>() { 
-         @Override 
-         public int compare(Process p1, Process p2)
-          { return p1.priority - p2.priority ;
-           } } );
-
-           System.out.println("LinkedList (after sorting in natural): " + process_queue);
-*/
-
-
-
-    
-
-
   }
 }

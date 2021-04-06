@@ -1,19 +1,30 @@
-fcfs wait of p 1 = 0
- time needed to finish p 1 time 10
- total time for p 1 time 10
- sum of waits for p 1 time 0
-fcfs wait of p 2 = 10
- time needed to finish p 2 time 8
- total time for p 2 time 18
- sum of waits for p 2 time 10
-fcfs wait of p 3 = 18
- time needed to finish p 3 time 12
- total time for p 3 time 18
- sum of waits for p 3 time 28
-average wait time for 3 procs = 9.333333333333334
 
-fcfs turn-around time for p1 = 10
-fcfs turn-around time for p2 = 28
-fcfs turn-around time for p3 = 58
-average turn-around time for 3 procs = 19.333333333333332
-fcfs throughput for p3 = 0.1
+Process list in FCFS order as entered: 
+1 10 5
+2 8 1
+3 12 7
+End of list.
+
+fcfs wait of p 1 = 0
+fcfs wait of p 2 = 10
+fcfs wait of p 3 = 18
+average wait time for 3 procs = 9.3333FCFS turn-around time for p1 = 10
+FCFS turn-around time for p2 = 18
+FCFS turn-around time for p3 = 30
+average turn-around time for 3 procs =19.3333 fcfs throughput for 3 procs = 0.1000 
+ <><> end fcfs schedule <><>
+
+Process list in HPF order: 
+2 8 1
+1 10 5
+3 12 7
+End of list.
+
+hpf wait of p 1 = 0
+hpf wait of p 2 = 8
+hpf wait of p 3 = 18
+average wait time for 3 procs = 8.6667HPF turn-around time for p1 = 8
+HPF turn-around time for p2 = 18
+HPF turn-around time for p3 = 30
+average turn-around time for 3 procs =18.6667 hpf throughput for 3 procs = 0.1000 
+ <><> end hpf schedule <><>
