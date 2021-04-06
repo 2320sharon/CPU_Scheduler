@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.*;
 
 public class Scheduler {
-    public static void get_wait(LinkedList<Process> queue, PrintWriter output, char mode ) {
+    public static int get_wait(LinkedList<Process> queue, PrintWriter output, char mode ) {
       String schedule_type="null";
       int total_wait=0;
       int sum_wait=0;
@@ -14,21 +14,22 @@ public class Scheduler {
        }
            for(int i =0; i< queue.size() ; ++i)
            {
-            output.println(schedule_type +" wait of p "+ (i+1) + " = " + total_wait );
+           // output.println(schedule_type +" wait of p "+ (i+1) + " = " + total_wait );
             sum_wait += total_wait;
-            output.println(" time needed to finish p " + (i+1) + " time " + queue.get(i).time  );
+           // output.println(" time needed to finish p " + (i+1) + " time " + queue.get(i).time  );
             if (i != (queue.size()-1) )              //Do not want to include the last wait time.
              { 
                total_wait += queue.get(i).time;         //increase the waiting time each time a process completes
              }
 
-              output.println(" total time for p " + (i+1) + " time " + total_wait );
-              output.println(" sum of waits for p " + (i+1) + " time " + sum_wait );
+            //  output.println(" total time for p " + (i+1) + " time " + total_wait );
+             // output.println(" sum of waits for p " + (i+1) + " time " + sum_wait );
            }
           // total_wait-= queue.get().time;                                  //subtract the first wait time since it is not part average wait
            double average_wait =get_average((double)sum_wait,queue.size());
            //output.println("average wait time for " + queue.size() + " procs = " + average_wait );
            print_avg_wait(output,queue.size(),average_wait);
+           return sum_wait;
        
       }
 

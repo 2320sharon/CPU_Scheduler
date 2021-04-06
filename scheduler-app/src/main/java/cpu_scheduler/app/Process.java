@@ -17,6 +17,13 @@ public class Process {
         return priority;
     }
 
+    Process(int given_id, int given_time, int given_priority)
+    {
+        id=given_id;
+        time= given_time;
+        priority=given_priority;
+    }
+
     @Override
     public String toString() {
         String str= "ID: "+ id + " time: "+ time+" priority: "+ priority;

@@ -17,10 +17,6 @@ public class App
       {
           String input= inputFile.nextLine();
           String[] tokens= input.split("\\s+");
-        //  System.out.println(" id: " + tokens[0]);
-       //   System.out.println("time: "+ tokens[1]);
-       //   System.out.println("priority: "+  tokens[2]);
-          //parse into three variables 
           Process process = new Process();
           process.id=Integer.parseInt(tokens[0]);
           process.time=Integer.parseInt(tokens[1]);
