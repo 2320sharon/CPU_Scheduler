@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import cpu_scheduler.Circular_Queue;
 
 import java.io.*;
 import java.util.*;
@@ -41,30 +42,32 @@ public class SchedulerTest {
   @Test
   public void test_copy_queue() {
      //Arrange
-     final LinkedList<RR_Process> expected_rr_queue= new LinkedList<RR_Process>();
+     final Circular_Queue expected_rr_queue= new Circular_Queue(queue.size());
      RR_Process  rr_proc;
 
      for(int i =0; i< queue.size() ; ++i)
      {
         rr_proc= new  RR_Process( queue.get(i).id, queue.get(i).time) ;
-        expected_rr_queue.add( rr_proc);
+        expected_rr_queue.enQueue( rr_proc);
      }
      
      //test
      System.out.println("Calling get_copy_queue()");
-    final LinkedList<RR_Process> actual_rr_queue = Scheduler.copy_queue( queue );
+    final Circular_Queue actual_rr_queue = Scheduler.copy_queue( queue );
 
     //Assert
    //Custom test function to compare the two linked lists
      boolean equals= true;
-     for(int i =0; i< queue.size(); ++i)
+     while(!actual_rr_queue.is_empty())
      {
-       if( (actual_rr_queue.get(i).id != expected_rr_queue.get(i).id) || (actual_rr_queue.get(i).time != expected_rr_queue.get(i).time) || (actual_rr_queue.get(i).time_left != expected_rr_queue.get(i).time_left)  )
+      RR_Process  actual_rr_proc= actual_rr_queue.deQueue();
+      RR_Process  expected_rr_proc= expected_rr_queue.deQueue();
+       if( ( actual_rr_proc.id != expected_rr_proc.id) || (actual_rr_proc.time != expected_rr_proc.time) || (actual_rr_proc.time_left != expected_rr_proc.time_left)  )
         {  
           equals=false;
           break;
         }
-        if((actual_rr_queue.get(i).timeslices != expected_rr_queue.get(i).timeslices) ) 
+        if((actual_rr_proc.timeslices != expected_rr_proc.timeslices) ) 
          {
            equals=false; 
           break;

@@ -1,6 +1,7 @@
 package cpu_scheduler.app;
 import java.io.*;
 import java.util.*;
+import cpu_scheduler.Circular_Queue;
 
 public class App 
 {
@@ -63,11 +64,11 @@ public static void sort_queue(LinkedList<Process> process_queue)
       Scheduler cpu_schedule= new Scheduler(); //do I need an object for this?
 
       //FCFS test
-      cpu_schedule.print_queue(process_queue,outputFile,'f');
+     /* cpu_schedule.print_queue(process_queue,outputFile,'f');
       cpu_schedule.get_wait(process_queue,outputFile,'f');
       cpu_schedule.get_turn_around_time(process_queue,outputFile,'f');
       cpu_schedule.get_throughput(process_queue,outputFile,'f');
-
+*/
       //HPF test
       /*App.sort_queue(process_queue);//need to put this cpu_schedule
       cpu_schedule.print_queue(process_queue,outputFile,'h');
@@ -75,7 +76,7 @@ public static void sort_queue(LinkedList<Process> process_queue)
       cpu_schedule.get_turn_around_time(process_queue,outputFile,'h');
       cpu_schedule.get_throughput(process_queue,outputFile,'h');*/
 
-      LinkedList<RR_Process>rr_queue =  cpu_schedule.copy_queue(process_queue);
+      Circular_Queue rr_queue =  cpu_schedule.copy_queue(process_queue);
       cpu_schedule.RoundRobin(process_queue,outputFile, 5,2,rr_queue);
 
       outputFile.close();

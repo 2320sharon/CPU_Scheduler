@@ -14,7 +14,7 @@ public class RR_Process {
         return time;
     }
 
-    RR_Process(int given_id, int given_time)
+    public RR_Process(int given_id, int given_time)
     {
         id=given_id;
         time= given_time;
@@ -22,7 +22,7 @@ public class RR_Process {
         timeslices=0;
     }
 
-    RR_Process()
+    public RR_Process()
     {
         id=1;
         time= 2;
