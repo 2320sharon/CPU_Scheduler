@@ -56,10 +56,26 @@ public class SchedulerTest {
     final LinkedList<RR_Process> actual_rr_queue = Scheduler.copy_queue( queue );
 
     //Assert
-    //I will need to make a custom assert function
-
    //Custom test function to compare the two linked lists
+     boolean equals= true;
+     for(int i =0; i< queue.size(); ++i)
+     {
+       if( (actual_rr_queue.get(i).id != expected_rr_queue.get(i).id) || (actual_rr_queue.get(i).time != expected_rr_queue.get(i).time) || (actual_rr_queue.get(i).time_left != expected_rr_queue.get(i).time_left)  )
+        {  
+          equals=false;
+          break;
+        }
+        if((actual_rr_queue.get(i).timeslices != expected_rr_queue.get(i).timeslices) ) 
+         {
+           equals=false; 
+          break;
+         }
+     }
+
+     if(equals)
      assert(true);
+     else
+     assert(false);
 
      // check if each of the values equal each other if they don't they we know its a fail so return assert false
      //otherwise assert(true) and maybe look into how to return a message
