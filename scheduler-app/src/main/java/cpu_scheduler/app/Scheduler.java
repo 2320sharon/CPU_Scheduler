@@ -96,7 +96,57 @@ public class Scheduler {
         return rr_queue;
       }
 
+      public static void RoundRobin(LinkedList<Process> queue, PrintWriter output, int quantum,  int overhead,  LinkedList<RR_Process> rr_queue)
+      {
 
+        //errors caused by fact this is a linked list and not a queue. Meaning the linked list must be copied to an actual queue
+
+        System.out.println("Entered Round Robin");
+        int total_time=0; 
+        int index=0;
+        int counter =0;
+        int sum_wait_time=0;
+        int size= queue.size();
+
+        output.println();
+        output.println("preemptive RR schedule, quantum = "+ quantum  + " overhead " + overhead );
+       // LinkedList<RR_Process>rr_queue =  copy_queue(queue);
+        while(!rr_queue.isEmpty())
+        {
+          System.out.println("Entered the loop");
+          System.out.println("index: "+ index);
+          
+            if(rr_queue.get(index).time_left <=quantum)
+            {
+              total_time+= rr_queue.get(index).time_left;  //add the process' time to the total, since its less than quantum
+              ++rr_queue.get(index).timeslices;
+              output.println("RR TA time for finished p"+rr_queue.get(index).id + " = "+total_time + " needed: " + rr_queue.get(index).time + " ms, and: "+ rr_queue.get(index).timeslices + " time slices.");
+              System.out.println("RR TA time for finished p"+rr_queue.get(index).id + " = "+total_time + " needed: " + rr_queue.get(index).time + " ms, and: "+ rr_queue.get(index).timeslices + " time slices.");
+              sum_wait_time+=total_time;
+              System.out.println("sum_wait_time: "+ sum_wait_time);
+              rr_queue.remove(index);
+              total_time+=overhead;
+              System.out.println("Total time after overhead is "+ total_time);
+            }
+            else{
+              ++ rr_queue.get(index).timeslices;      //the process has used a time slice
+              total_time += quantum;
+              System.out.println("Total time for proc: "+ rr_queue.get(index).id + " is "+ total_time);
+              rr_queue.get(index).time_left-=quantum;
+              total_time+=overhead;
+              System.out.println("Total time for proc: "+ rr_queue.get(index).id + " after overhead is "+ total_time);
+            }
+            if(index >= (rr_queue.size()-1))
+              index=0;
+            else
+            ++index;
+        }
+          //total_time-=overhead;//decrease the total time to account for the extra context switch at the end
+        double average_rr= get_average(sum_wait_time,size);
+         output.println("Average RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: "+ average_rr);
+         System.out.println("Average RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: "+ average_rr);
+
+      }
 
       public static void print_queue(LinkedList<Process> queue, PrintWriter output, char mode )
       {

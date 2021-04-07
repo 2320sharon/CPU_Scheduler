@@ -37,7 +37,6 @@ public class SchedulerTest {
        System.out.println("Finished a queue");
   }
   
- 
 
   @Test
   public void test_copy_queue() {

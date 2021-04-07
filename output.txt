@@ -14,17 +14,8 @@ FCFS turn-around time for p3 = 30
 average turn-around time for 3 procs =19.3333 fcfs throughput for 3 procs = 0.1000 
  <><> end fcfs schedule <><>
 
-Process list in HPF order: 
-2 8 1
-1 10 5
-3 12 7
-End of list.
-
-hpf wait of p 1 = 0
-hpf wait of p 2 = 8
-hpf wait of p 3 = 18
-average wait time for 3 procs = 8.6667HPF turn-around time for p1 = 8
-HPF turn-around time for p2 = 18
-HPF turn-around time for p3 = 30
-average turn-around time for 3 procs =18.6667 hpf throughput for 3 procs = 0.1000 
- <><> end hpf schedule <><>
+preemptive RR schedule, quantum = 5 overhead 2
+RR TA time for finished p1 = 26 needed: 10 ms, and: 2 time slices.
+RR TA time for finished p2 = 38 needed: 8 ms, and: 2 time slices.
+RR TA time for finished p3 = 42 needed: 12 ms, and: 3 time slices.
+Average RR TA, 3  p with q: 5, o: 2, is: 35.333333333333336

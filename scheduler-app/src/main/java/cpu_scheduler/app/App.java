@@ -69,29 +69,14 @@ public static void sort_queue(LinkedList<Process> process_queue)
       cpu_schedule.get_throughput(process_queue,outputFile,'f');
 
       //HPF test
-      App.sort_queue(process_queue);
+      /*App.sort_queue(process_queue);//need to put this cpu_schedule
       cpu_schedule.print_queue(process_queue,outputFile,'h');
       cpu_schedule.get_wait(process_queue,outputFile,'h');
       cpu_schedule.get_turn_around_time(process_queue,outputFile,'h');
-      cpu_schedule.get_throughput(process_queue,outputFile,'h');
+      cpu_schedule.get_throughput(process_queue,outputFile,'h');*/
 
       LinkedList<RR_Process>rr_queue =  cpu_schedule.copy_queue(process_queue);
-
-
-     // LinkedList<RR_Process>rr_queue= new LinkedList<>(); //make a new queue 
-      //  RR_Process  rr_proc;
-
-    /*  for(int i =0; i< process_queue.size() ; ++i)
-      {
-        rr_proc= new  RR_Process( process_queue.get(i).id, process_queue.get(i).time) ;
-        rr_queue.add( rr_proc);
-      }*/
-
-      for(int i =0; i< rr_queue.size() ; ++i)
-      {
-        System.out.println("rr_queue: id: " + rr_queue.get(i).id);
-        System.out.println("rr_queue: time: " + rr_queue.get(i).time);
-      }
+      cpu_schedule.RoundRobin(process_queue,outputFile, 5,2,rr_queue);
 
       outputFile.close();
   }
