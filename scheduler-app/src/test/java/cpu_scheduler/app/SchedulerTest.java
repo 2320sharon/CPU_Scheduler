@@ -37,6 +37,34 @@ public class SchedulerTest {
        System.out.println("Finished a queue");
   }
   
+ 
+
+  @Test
+  public void test_copy_queue() {
+     //Arrange
+     final LinkedList<RR_Process> expected_rr_queue= new LinkedList<RR_Process>();
+     RR_Process  rr_proc;
+
+     for(int i =0; i< queue.size() ; ++i)
+     {
+        rr_proc= new  RR_Process( queue.get(i).id, queue.get(i).time) ;
+        expected_rr_queue.add( rr_proc);
+     }
+     
+     //test
+     System.out.println("Calling get_copy_queue()");
+    final LinkedList<RR_Process> actual_rr_queue = Scheduler.copy_queue( queue );
+
+    //Assert
+    //I will need to make a custom assert function
+
+   //Custom test function to compare the two linked lists
+     assert(true);
+
+     // check if each of the values equal each other if they don't they we know its a fail so return assert false
+     //otherwise assert(true) and maybe look into how to return a message
+    System.out.println("Finished get_wait() test");
+  }
 
   @Test
   public void test_get_wait() throws FileNotFoundException{

@@ -83,6 +83,20 @@ public class Scheduler {
             return num_procs/total_wait ;
       }
 
+      public static  LinkedList<RR_Process> copy_queue(LinkedList<Process> queue )
+      {
+        LinkedList<RR_Process>rr_queue= new LinkedList<>(); //make a new queue 
+        RR_Process  rr_proc;
+
+        for(int i =0; i< queue.size() ; ++i)
+        {
+           rr_proc= new  RR_Process( queue.get(i).id, queue.get(i).time) ;
+           rr_queue.add( rr_proc);
+        }
+        return rr_queue;
+      }
+
+
 
       public static void print_queue(LinkedList<Process> queue, PrintWriter output, char mode )
       {
