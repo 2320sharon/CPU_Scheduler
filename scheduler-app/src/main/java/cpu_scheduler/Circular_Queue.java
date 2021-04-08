@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import cpu_scheduler.app.RR_Process;
 
 public class Circular_Queue {
-    private int size, front, rear, curr_size;
+    private int size, front, rear;
 
     //private LinkedList<RR_Process> queue;
     RR_Process[] queue;
@@ -16,8 +16,7 @@ public class Circular_Queue {
         size=given_size;
      //   System.out.println(" Size  is : "+ size );
        front=rear=-1;//nothing is in the queue, so set both front and rear to -1
-        curr_size=0;
-
+      
        // queue = new LinkedList<>();
        queue = new RR_Process[size];
     }
@@ -52,7 +51,7 @@ public class Circular_Queue {
          queue[rear] =  rr_proc;
         //queue.set(rear,rr_proc);    //inserts at the new rear
         System.out.println("Inserted "+  queue[rear].id + " to queue. rear at index "+ rear + "Front index: "+ front);
-      /*  ++curr_size;
+      /*  
         System.out.println();
         System.out.println("Displaying queue withing enqueue");
         displayQueue();
@@ -92,7 +91,7 @@ public class Circular_Queue {
             System.out.println("The new front is at : " + front);
        }
        System.out.println("The item dequeue is : " + rr_proc);
-       --curr_size;
+    
         return rr_proc;
     }
 

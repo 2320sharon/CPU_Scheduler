@@ -1,7 +1,7 @@
 
-preemptive RR schedule, quantum = 4 overhead 2
-RR TA time for finished p2 = 28, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p1 = 38, needed: 10 ms, and: 3 time slices.
-RR TA time for finished p3 = 44, needed: 12 ms, and: 3 time slices.
+preemptive RR schedule, quantum = 5 overhead 2
+RR TA time for finished p1 = 26, needed: 10 ms, and: 2 time slices.
+RR TA time for finished p2 = 31, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p3 = 42, needed: 12 ms, and: 3 time slices.
 
-Average RR TA, 3  p with q: 4, o: 2, is: 36.6667 
+Average RR TA, 3  p with q: 5, o: 2, is: 33.0000 
