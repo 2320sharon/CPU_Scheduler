@@ -86,18 +86,22 @@ public class Scheduler {
 
       public static  Circular_Queue copy_queue(LinkedList<Process> queue )
       {
+        System.out.println("Given queue.size() is: "+ queue.size());
         Circular_Queue rr_queue= new Circular_Queue(queue.size()); //make a new queue
         RR_Process  rr_proc;
+
+        System.out.println(" rr_queue.size() is: "+ rr_queue.get_size());
 
         for(int i =0; i< queue.size() ; ++i)
         {
            rr_proc= new  RR_Process( queue.get(i).id, queue.get(i).time) ;
            rr_queue.enQueue( rr_proc);
         }
+        System.out.println(" rr_queue.size() is: "+ rr_queue.get_size());
         return rr_queue;
       }
 
-      public static void RoundRobin(LinkedList<Process> queue, PrintWriter output, int quantum,  int overhead, Circular_Queue rr_queue)
+      public  void RoundRobin(LinkedList<Process> queue, PrintWriter output, int quantum,  int overhead, Circular_Queue rr_queue)
       {
         System.out.println("Entered Round Robin");
         int total_time=0; 
@@ -113,11 +117,12 @@ public class Scheduler {
           System.out.println();
           System.out.println("Entered the loop");
           System.out.println(" Before dequeue");
-          rr_queue.displayQueue();
-
-          curr_proc = rr_queue.deQueue();           //take the first process for the queue and modify it
+         
+           
+           //curr_proc = rr_queue.peek();           //take the first process for the queue and modify it
+           curr_proc = rr_queue.deQueue();           //take the first process for the queue and modify it
           System.out.println("After dequeue");
-          rr_queue.displayQueue();
+        
 
           System.out.println("p"+curr_proc.id + "time left "+curr_proc.time_left + ", needs " + curr_proc.time);
           
@@ -133,25 +138,28 @@ public class Scheduler {
               System.out.println("sum_wait_time: "+ sum_wait_time);
               total_time+=overhead;
               System.out.println("Total time after overhead is "+ total_time);
+             // curr_proc = rr_queue.deQueue();
             }
             else{
               ++ curr_proc.timeslices;                 //the process has used a time slice
               total_time += quantum;
               System.out.println("Total time for proc: "+ curr_proc.id + " is "+ total_time);
               curr_proc.time_left-=quantum;
-              rr_queue.enQueue(curr_proc);             //put the process back into the queue at the rear
-              
-              System.out.println("After re-enqueue");
-              rr_queue.displayQueue();
 
               total_time+=overhead;
               System.out.println("Total time for proc: "+ curr_proc.id + " after overhead is "+ total_time);
+             // System.out.println("Curr size before enqueue : "+rr_queue.get_curr_size());
+              rr_queue.enQueue(curr_proc);             //put the process back into the queue at the rear
+              System.out.println("\n After re-enqueue");
+             // System.out.println("Curr proc: "+ curr_proc.id );
+             // System.out.println("Curr size after enqueue : "+rr_queue.get_curr_size());
             }
         }
           //total_time-=overhead;//decrease the total time to account for the extra context switch at the end
         double average_rr= get_average(sum_wait_time,size);
-         output.println("Average RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: "+ average_rr);
-         System.out.println("Average RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: "+ average_rr);
+        
+         output.printf("\nAverage RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f ", average_rr);
+         System.out.printf("\nAverage RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f  ", average_rr);
 
       }
 

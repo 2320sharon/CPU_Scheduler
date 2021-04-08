@@ -77,7 +77,9 @@ public static void sort_queue(LinkedList<Process> process_queue)
       cpu_schedule.get_throughput(process_queue,outputFile,'h');*/
 
       Circular_Queue rr_queue =  cpu_schedule.copy_queue(process_queue);
-      cpu_schedule.RoundRobin(process_queue,outputFile, 5,2,rr_queue);
+
+      cpu_schedule.RoundRobin(process_queue,outputFile, 4,2,rr_queue);
+
 
       outputFile.close();
   }
