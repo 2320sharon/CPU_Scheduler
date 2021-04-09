@@ -92,90 +92,59 @@ public class Scheduler {
         {
             for( overhead=0; overhead<=q; ++overhead)
             {
-              System.out.println("preemptive RR schedule, quantum = "+q+ " overhead = "+ overhead);
               output.println("preemptive RR schedule, quantum = "+q+ " overhead = "+ overhead);
               //call the copy constructor 
               Circular_Queue rr_queue =  copy_queue(queue);
               //call the robin robin
               RoundRobin(queue,output, q,overhead,rr_queue);
-              System.out.println();
-              output.println();
-             
+              output.println();                             //blank line between overhead sections
             }
-            System.out.println();
+  
         }
-        System.out.println( "<><> end preemptive RR schedule <><>");
+
         output.println( "<><> end preemptive RR schedule <><>");
       }
 
       public static  Circular_Queue copy_queue(LinkedList<Process> queue )
       {
-        System.out.println("Given queue.size() is: "+ queue.size());
         Circular_Queue rr_queue= new Circular_Queue(queue.size()); //make a new queue
         RR_Process  rr_proc;
-
-        System.out.println(" rr_queue.size() is: "+ rr_queue.get_size());
 
         for(int i =0; i< queue.size() ; ++i)
         {
            rr_proc= new  RR_Process( queue.get(i).id, queue.get(i).time) ;
            rr_queue.enQueue( rr_proc);
         }
-        System.out.println(" rr_queue.size() is: "+ rr_queue.get_size());
         return rr_queue;
       }
 
       private  void RoundRobin(LinkedList<Process> queue, PrintWriter output, int quantum,  int overhead, Circular_Queue rr_queue)
       {
-        System.out.println("Entered Round Robin");
         int total_time=0; 
         int sum_wait_time=0;
         int size= queue.size();
         RR_Process curr_proc;
 
-       // output.println();
-       // output.println("preemptive RR schedule, quantum = "+ quantum  + " overhead " + overhead );
-       // LinkedList<RR_Process>rr_queue =  copy_queue(queue);
         while(!rr_queue.is_empty())
         {
-          System.out.println();
-          System.out.println("Entered the loop");
-          System.out.println(" Before dequeue");
-         
-           
-           //curr_proc = rr_queue.peek();           //take the first process for the queue and modify it
            curr_proc = rr_queue.deQueue();           //take the first process for the queue and modify it
-          System.out.println("After dequeue");
-        
-
-          System.out.println("p"+curr_proc.id + "time left "+curr_proc.time_left + ", needs " + curr_proc.time);
-          
+    
             if(curr_proc.time_left <=quantum)       //will not need the full CPU burst time and the process is finished so it will not be reinserted
             {
-              System.out.println(" p"+curr_proc.id + "time left  = "+curr_proc.time_left);
               total_time+= curr_proc.time_left;       //add the process' time to the total, since its less than quantum
               ++curr_proc.timeslices;
               output.println("RR TA time for finished p"+curr_proc.id + " = "+total_time + ", needed: " + curr_proc.time + " ms, and: "+ curr_proc.timeslices + " time slices.");
-              System.out.println("RR TA time for finished p"+curr_proc.id + " = "+total_time + ", needed: " + curr_proc.time + " ms, and: "+ curr_proc.timeslices + " time slices.");
               sum_wait_time+=total_time;
               curr_proc.time_left-=quantum;
-              System.out.println("sum_wait_time: "+ sum_wait_time);
               total_time+=overhead;
-              System.out.println("Total time after overhead is "+ total_time);
-             // curr_proc = rr_queue.deQueue();
             }
             else{
               ++ curr_proc.timeslices;                 //the process has used a time slice
               total_time += quantum;
-              //System.out.println("Total time for proc: "+ curr_proc.id + " is "+ total_time);
               curr_proc.time_left-=quantum;
 
               total_time+=overhead;
-              System.out.println("Total time for proc: "+ curr_proc.id + " after overhead is "+ total_time);
-             // System.out.println("Curr size before enqueue : "+rr_queue.get_curr_size());
               rr_queue.enQueue(curr_proc);             //put the process back into the queue at the rear
-             // System.out.println("Curr proc: "+ curr_proc.id );
-             // System.out.println("Curr size after enqueue : "+rr_queue.get_curr_size());
             }
         }
           //total_time-=overhead;//decrease the total time to account for the extra context switch at the end
