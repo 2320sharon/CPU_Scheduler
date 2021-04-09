@@ -25,7 +25,9 @@ public class Scheduler {
            }
     
            double average_wait =get_average((double)sum_wait,queue.size());
+         
            output.printf("average wait time for " + queue.size() + " procs = %.4f", average_wait, "\n" );
+           output.println();
            return sum_wait;
        
       }
@@ -43,8 +45,8 @@ public class Scheduler {
               total_time += queue.get(i).time;         //increase the waiting time each time a process completes
       
              double throughput =  calc_throughput((double)total_time,queue.size());
-             output.printf(schedule_type +" throughput for "+ queue.size() + " procs = %.4f " , throughput ,  " proc/ms  \n" );
-             output.println( );
+             output.printf(schedule_type +" throughput for "+ queue.size() + " procs = %.4f proc/ms  \n " , throughput);
+            // output.println( );
              output.println(" <><> end " + schedule_type +" schedule <><>" );
             return total_time;
         }
@@ -68,8 +70,10 @@ public class Scheduler {
               output.println(schedule_type +" turn-around time for p"+ (i+1) + " = " + turnaround );
             }
              double average_turn_around_time =get_average((double)sum_turnaround,queue.size());
-             output.printf("average turn-around time for " + queue.size() + " procs =%.4f " , average_turn_around_time, "\n" );
-         return sum_turnaround;
+            
+             output.printf("average turn-around time for " + queue.size() + " procs =%.4f " , average_turn_around_time, " \n" );
+             output.println();
+             return sum_turnaround;
         }
  
       public static double get_average(double total_wait,int size )
@@ -217,5 +221,27 @@ public class Scheduler {
         output.println();
       }
 
+      public static LinkedList<Process> sort_queue(LinkedList<Process> process_queue)
+{
+  //make a copy of process_queue to sort
+  LinkedList<Process> queue= new LinkedList<Process>() ;
+  for(int i=0; i< process_queue.size(); ++i)
+  {
+    Process process = new Process();
+    process.id=process_queue.get(i).id;
+    process.time=process_queue.get(i).time;
+    process.priority=process_queue.get(i).priority;
+    queue.add(process);
+  }
+
+  Collections.sort(process_queue, new Comparator<Process>() { 
+    @Override 
+    public int compare(Process p1, Process p2)
+     { return p1.priority - p2.priority ;
+      } } );
+
+      System.out.println("LinkedList (after sorting by priorty): " + process_queue);
+      return queue;
+}
 
     }

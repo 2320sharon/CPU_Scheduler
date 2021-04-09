@@ -5,7 +5,6 @@ import cpu_scheduler.Circular_Queue;
 
 public class App 
 {
-
  public static void read_inputfile(LinkedList<Process> queue) throws IOException {
 
    try{
@@ -37,20 +36,7 @@ public class App
   catch(FileNotFoundException exception_file){
     System.out.println("Input file Not Found");
   }
- 
-   
-  }
-
-public static void sort_queue(LinkedList<Process> process_queue)
-{
-  Collections.sort(process_queue, new Comparator<Process>() { 
-    @Override 
-    public int compare(Process p1, Process p2)
-     { return p1.priority - p2.priority ;
-      } } );
-
-      System.out.println("LinkedList (after sorting by priorty): " + process_queue);
-}
+   }
 
   public static void main( String[] args )throws IOException
   {
@@ -64,17 +50,18 @@ public static void sort_queue(LinkedList<Process> process_queue)
       Scheduler cpu_schedule= new Scheduler(); //do I need an object for this?
 
       //FCFS test
-     /* cpu_schedule.print_queue(process_queue,outputFile,'f');
+      cpu_schedule.print_queue(process_queue,outputFile,'f');
       cpu_schedule.get_wait(process_queue,outputFile,'f');
       cpu_schedule.get_turn_around_time(process_queue,outputFile,'f');
       cpu_schedule.get_throughput(process_queue,outputFile,'f');
-*/
+
       //HPF test
-      /*App.sort_queue(process_queue);//need to put this cpu_schedule
-      cpu_schedule.print_queue(process_queue,outputFile,'h');
-      cpu_schedule.get_wait(process_queue,outputFile,'h');
-      cpu_schedule.get_turn_around_time(process_queue,outputFile,'h');
-      cpu_schedule.get_throughput(process_queue,outputFile,'h');*/
+      LinkedList<Process> sorted_queue=new LinkedList<>();
+      sorted_queue = cpu_schedule.sort_queue(process_queue);//need to put this cpu_schedule
+      cpu_schedule.print_queue(sorted_queue,outputFile,'h');
+      cpu_schedule.get_wait(sorted_queue,outputFile,'h');
+      cpu_schedule.get_turn_around_time(sorted_queue,outputFile,'h');
+      cpu_schedule.get_throughput(sorted_queue,outputFile,'h');
 
       //Circular_Queue rr_queue =  cpu_schedule.copy_queue(process_queue);
 
