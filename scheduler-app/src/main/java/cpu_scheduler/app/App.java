@@ -97,6 +97,8 @@ do {
         loop_again=false;
 
   }while(loop_again == true);
+
+  keyboard.close();
      
   }
 }
