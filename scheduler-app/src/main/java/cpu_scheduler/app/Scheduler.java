@@ -25,9 +25,7 @@ public class Scheduler {
            }
     
            double average_wait =get_average((double)sum_wait,queue.size());
-         
-           output.printf("average wait time for " + queue.size() + " procs = %.4f", average_wait, "\n" );
-           output.println();
+           output.printf("average wait time for " + queue.size() + " procs = %.4f \n", average_wait);
            return sum_wait;
        
       }
@@ -46,8 +44,7 @@ public class Scheduler {
       
              double throughput =  calc_throughput((double)total_time,queue.size());
              output.printf(schedule_type +" throughput for "+ queue.size() + " procs = %.4f proc/ms  \n " , throughput);
-            // output.println( );
-             output.println(" <><> end " + schedule_type +" schedule <><>" );
+             output.println(" <><> end " + schedule_type +" schedule <><>\n" );
             return total_time;
         }
 
@@ -71,8 +68,7 @@ public class Scheduler {
             }
              double average_turn_around_time =get_average((double)sum_turnaround,queue.size());
             
-             output.printf("average turn-around time for " + queue.size() + " procs =%.4f " , average_turn_around_time, " \n" );
-             output.println();
+             output.printf("average turn-around time for " + queue.size() + " procs =%.4f \n" , average_turn_around_time);
              return sum_turnaround;
         }
  
@@ -89,6 +85,9 @@ public class Scheduler {
       public  void RoundRobin_Schedular(LinkedList<Process> queue, PrintWriter output){
         int quantum=5;
         int overhead=0;
+
+        print_queue(queue,output,'R');
+
         for(int q=1 ; q <= quantum; ++q)
         {
             for( overhead=0; overhead<=q; ++overhead)
@@ -210,7 +209,7 @@ public class Scheduler {
        else
        {
         schedule_type= "RR";
-        output.println("Process list for "+ schedule_type +"in order entered: " );
+        output.println("Process list for "+ schedule_type +" in order entered: " );
        }
 
         for(int i =0; i< queue.size() ; ++i)
@@ -234,13 +233,13 @@ public class Scheduler {
     queue.add(process);
   }
 
-  Collections.sort(process_queue, new Comparator<Process>() { 
+  Collections.sort(queue, new Comparator<Process>() { 
     @Override 
     public int compare(Process p1, Process p2)
      { return p1.priority - p2.priority ;
       } } );
 
-      System.out.println("LinkedList (after sorting by priorty): " + process_queue);
+      System.out.println("LinkedList (after sorting by priorty): " + queue);
       return queue;
 }
 
