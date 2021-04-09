@@ -4,12 +4,6 @@ import java.util.*;
 import cpu_scheduler.Circular_Queue;
 
 public class Scheduler {
- // LinkedList<Process> queue;
- // PrintWriter output;
-  
-  /*public Scheduler(){
-
-  }*/
 
   public static void get_HPF_schedule(LinkedList<Process> queue, PrintWriter output, char mode){
     

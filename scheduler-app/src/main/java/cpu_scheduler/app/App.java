@@ -92,10 +92,7 @@ do {
       loop_choice= answer.charAt(0);
 
       if(loop_choice =='y')         //the user would like to loop again
-      {
         loop_again=true;
-        System.out.println("loop again= "+ loop_again);
-      }
       else                            //the user would not like to loop again
         loop_again=false;
 
