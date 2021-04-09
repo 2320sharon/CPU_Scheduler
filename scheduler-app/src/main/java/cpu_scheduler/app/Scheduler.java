@@ -4,6 +4,26 @@ import java.util.*;
 import cpu_scheduler.Circular_Queue;
 
 public class Scheduler {
+ // LinkedList<Process> queue;
+ // PrintWriter output;
+  
+  /*public Scheduler(){
+
+  }*/
+
+  public static void get_FCHS_schedule(LinkedList<Process> queue, PrintWriter output, char mode){
+   
+   //call print_queue() first to print the queue entered by the user
+    print_queue(queue,output,'f');
+    //call the get_wait function to print wait times after printing the queues
+    get_wait(queue,output,'f');
+    //call turn aorund time () to print the turn around for FCFS
+    get_turn_around_time(queue,output,'f');
+    //call turn aorund time () to print the throughput for FCFS
+    get_throughput(queue,output,'f');
+
+  }
+
       public static int get_wait(LinkedList<Process> queue, PrintWriter output, char mode ) {
       String schedule_type="null";
       int total_wait=0;

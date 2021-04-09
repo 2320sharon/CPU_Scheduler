@@ -41,6 +41,13 @@ public class App
   {
     //create the input queue
     LinkedList<Process> process_queue=new LinkedList<>();
+
+    //add an option to change the input and output file
+
+    //add a go again option
+
+    //maybe consolidate some of the functions into a single function.
+
      App.read_inputfile(process_queue);
 
      //create the output file
@@ -49,10 +56,8 @@ public class App
       Scheduler cpu_schedule= new Scheduler(); //do I need an object for this?
 
       //FCFS test
-      cpu_schedule.print_queue(process_queue,outputFile,'f');
-      cpu_schedule.get_wait(process_queue,outputFile,'f');
-      cpu_schedule.get_turn_around_time(process_queue,outputFile,'f');
-      cpu_schedule.get_throughput(process_queue,outputFile,'f');
+      cpu_schedule.get_FCHS_schedule(process_queue,outputFile,'f');
+
 
       //HPF test
       LinkedList<Process> sorted_queue=new LinkedList<>();
