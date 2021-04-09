@@ -35,6 +35,7 @@ public class Circular_Queue {
         if(is_full())
       {
           System.out.print("Queue is Full");
+          throw new NoSuchElementException();
       }
       else if(is_empty()){//insert into empty queue
        ++ front ;

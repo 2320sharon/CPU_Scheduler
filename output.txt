@@ -5,6 +5,7 @@ Process list in FCFS order as entered:
 3 12 7
 4 20 2
 5 20 3
+11 45 8
 End of list.
 
 fcfs wait of p 1 = 0
@@ -12,14 +13,16 @@ fcfs wait of p 2 = 10
 fcfs wait of p 3 = 18
 fcfs wait of p 4 = 30
 fcfs wait of p 5 = 50
-average wait time for 5 procs = 21.6000 
+fcfs wait of p 6 = 70
+average wait time for 6 procs = 29.6667 
 FCFS turn-around time for p1 = 10
 FCFS turn-around time for p2 = 18
 FCFS turn-around time for p3 = 30
 FCFS turn-around time for p4 = 50
 FCFS turn-around time for p5 = 70
-average turn-around time for 5 procs =35.6000 
-fcfs throughput for 5 procs = 0.0714 proc/ms  
+FCFS turn-around time for p6 = 115
+average turn-around time for 6 procs =48.8333 
+fcfs throughput for 6 procs = 0.0522 proc/ms  
   <><> end fcfs schedule <><>
 
 
@@ -29,6 +32,7 @@ Process list in HPF order:
 5 20 3
 1 10 5
 3 12 7
+11 45 8
 End of list.
 
 hpf wait of p 1 = 0
@@ -36,14 +40,16 @@ hpf wait of p 2 = 8
 hpf wait of p 3 = 28
 hpf wait of p 4 = 48
 hpf wait of p 5 = 58
-average wait time for 5 procs = 28.4000 
+hpf wait of p 6 = 70
+average wait time for 6 procs = 35.3333 
 HPF turn-around time for p1 = 8
 HPF turn-around time for p2 = 28
 HPF turn-around time for p3 = 48
 HPF turn-around time for p4 = 58
 HPF turn-around time for p5 = 70
-average turn-around time for 5 procs =42.4000 
-hpf throughput for 5 procs = 0.0714 proc/ms  
+HPF turn-around time for p6 = 115
+average turn-around time for 6 procs =54.5000 
+hpf throughput for 6 procs = 0.0522 proc/ms  
   <><> end hpf schedule <><>
 
 
@@ -53,186 +59,207 @@ Process list for RR in order entered:
 3 12 7
 4 20 2
 5 20 3
+11 45 8
 End of list.
 
 preemptive RR schedule, quantum = 1 overhead = 0
-RR TA time for finished p2 = 37, needed: 8 ms, and: 8 time slices.
-RR TA time for finished p1 = 45, needed: 10 ms, and: 10 time slices.
-RR TA time for finished p3 = 52, needed: 12 ms, and: 12 time slices.
-RR TA time for finished p4 = 69, needed: 20 ms, and: 20 time slices.
-RR TA time for finished p5 = 70, needed: 20 ms, and: 20 time slices.
-RR Throughput, 5  p with q: 1, o: 0, is: 0.0714 p/ms, or  71.4286 p/us
-Average RR TA, 5  p with q: 1, o: 0, is: 54.6000 
+RR TA time for finished p2 = 44, needed: 8 ms, and: 8 time slices.
+RR TA time for finished p1 = 54, needed: 10 ms, and: 10 time slices.
+RR TA time for finished p3 = 63, needed: 12 ms, and: 12 time slices.
+RR TA time for finished p4 = 88, needed: 20 ms, and: 20 time slices.
+RR TA time for finished p5 = 89, needed: 20 ms, and: 20 time slices.
+RR TA time for finished p11 = 115, needed: 45 ms, and: 45 time slices.
+RR Throughput, 6  p with q: 1, o: 0, is: 0.0522 p/ms, or  52.1739 p/us
+Average RR TA, 6  p with q: 1, o: 0, is: 75.5000 
 
 preemptive RR schedule, quantum = 1 overhead = 1
-RR TA time for finished p2 = 73, needed: 8 ms, and: 8 time slices.
-RR TA time for finished p1 = 89, needed: 10 ms, and: 10 time slices.
-RR TA time for finished p3 = 103, needed: 12 ms, and: 12 time slices.
-RR TA time for finished p4 = 137, needed: 20 ms, and: 20 time slices.
-RR TA time for finished p5 = 139, needed: 20 ms, and: 20 time slices.
-RR Throughput, 5  p with q: 1, o: 1, is: 0.0360 p/ms, or  35.9712 p/us
-Average RR TA, 5  p with q: 1, o: 1, is: 108.2000 
+RR TA time for finished p2 = 87, needed: 8 ms, and: 8 time slices.
+RR TA time for finished p1 = 107, needed: 10 ms, and: 10 time slices.
+RR TA time for finished p3 = 125, needed: 12 ms, and: 12 time slices.
+RR TA time for finished p4 = 175, needed: 20 ms, and: 20 time slices.
+RR TA time for finished p5 = 177, needed: 20 ms, and: 20 time slices.
+RR TA time for finished p11 = 229, needed: 45 ms, and: 45 time slices.
+RR Throughput, 6  p with q: 1, o: 1, is: 0.0262 p/ms, or  26.2009 p/us
+Average RR TA, 6  p with q: 1, o: 1, is: 150.0000 
 
 preemptive RR schedule, quantum = 2 overhead = 0
-RR TA time for finished p2 = 34, needed: 8 ms, and: 4 time slices.
-RR TA time for finished p1 = 42, needed: 10 ms, and: 5 time slices.
-RR TA time for finished p3 = 50, needed: 12 ms, and: 6 time slices.
-RR TA time for finished p4 = 68, needed: 20 ms, and: 10 time slices.
-RR TA time for finished p5 = 70, needed: 20 ms, and: 10 time slices.
-RR Throughput, 5  p with q: 2, o: 0, is: 0.0714 p/ms, or  71.4286 p/us
-Average RR TA, 5  p with q: 2, o: 0, is: 52.8000 
+RR TA time for finished p2 = 40, needed: 8 ms, and: 4 time slices.
+RR TA time for finished p1 = 50, needed: 10 ms, and: 5 time slices.
+RR TA time for finished p3 = 60, needed: 12 ms, and: 6 time slices.
+RR TA time for finished p4 = 86, needed: 20 ms, and: 10 time slices.
+RR TA time for finished p5 = 88, needed: 20 ms, and: 10 time slices.
+RR TA time for finished p11 = 115, needed: 45 ms, and: 23 time slices.
+RR Throughput, 6  p with q: 2, o: 0, is: 0.0522 p/ms, or  52.1739 p/us
+Average RR TA, 6  p with q: 2, o: 0, is: 73.1667 
 
 preemptive RR schedule, quantum = 2 overhead = 1
-RR TA time for finished p2 = 50, needed: 8 ms, and: 4 time slices.
-RR TA time for finished p1 = 62, needed: 10 ms, and: 5 time slices.
-RR TA time for finished p3 = 74, needed: 12 ms, and: 6 time slices.
-RR TA time for finished p4 = 101, needed: 20 ms, and: 10 time slices.
-RR TA time for finished p5 = 104, needed: 20 ms, and: 10 time slices.
-RR Throughput, 5  p with q: 2, o: 1, is: 0.0481 p/ms, or  48.0769 p/us
-Average RR TA, 5  p with q: 2, o: 1, is: 78.2000 
+RR TA time for finished p2 = 59, needed: 8 ms, and: 4 time slices.
+RR TA time for finished p1 = 74, needed: 10 ms, and: 5 time slices.
+RR TA time for finished p3 = 89, needed: 12 ms, and: 6 time slices.
+RR TA time for finished p4 = 128, needed: 20 ms, and: 10 time slices.
+RR TA time for finished p5 = 131, needed: 20 ms, and: 10 time slices.
+RR TA time for finished p11 = 172, needed: 45 ms, and: 23 time slices.
+RR Throughput, 6  p with q: 2, o: 1, is: 0.0349 p/ms, or  34.8837 p/us
+Average RR TA, 6  p with q: 2, o: 1, is: 108.8333 
 
 preemptive RR schedule, quantum = 2 overhead = 2
-RR TA time for finished p2 = 66, needed: 8 ms, and: 4 time slices.
-RR TA time for finished p1 = 82, needed: 10 ms, and: 5 time slices.
-RR TA time for finished p3 = 98, needed: 12 ms, and: 6 time slices.
-RR TA time for finished p4 = 134, needed: 20 ms, and: 10 time slices.
-RR TA time for finished p5 = 138, needed: 20 ms, and: 10 time slices.
-RR Throughput, 5  p with q: 2, o: 2, is: 0.0362 p/ms, or  36.2319 p/us
-Average RR TA, 5  p with q: 2, o: 2, is: 103.6000 
+RR TA time for finished p2 = 78, needed: 8 ms, and: 4 time slices.
+RR TA time for finished p1 = 98, needed: 10 ms, and: 5 time slices.
+RR TA time for finished p3 = 118, needed: 12 ms, and: 6 time slices.
+RR TA time for finished p4 = 170, needed: 20 ms, and: 10 time slices.
+RR TA time for finished p5 = 174, needed: 20 ms, and: 10 time slices.
+RR TA time for finished p11 = 229, needed: 45 ms, and: 23 time slices.
+RR Throughput, 6  p with q: 2, o: 2, is: 0.0262 p/ms, or  26.2009 p/us
+Average RR TA, 6  p with q: 2, o: 2, is: 144.5000 
 
 preemptive RR schedule, quantum = 3 overhead = 0
-RR TA time for finished p2 = 35, needed: 8 ms, and: 3 time slices.
-RR TA time for finished p1 = 45, needed: 10 ms, and: 4 time slices.
-RR TA time for finished p3 = 48, needed: 12 ms, and: 4 time slices.
-RR TA time for finished p4 = 68, needed: 20 ms, and: 7 time slices.
-RR TA time for finished p5 = 70, needed: 20 ms, and: 7 time slices.
-RR Throughput, 5  p with q: 3, o: 0, is: 0.0714 p/ms, or  71.4286 p/us
-Average RR TA, 5  p with q: 3, o: 0, is: 53.2000 
+RR TA time for finished p2 = 41, needed: 8 ms, and: 3 time slices.
+RR TA time for finished p1 = 54, needed: 10 ms, and: 4 time slices.
+RR TA time for finished p3 = 57, needed: 12 ms, and: 4 time slices.
+RR TA time for finished p4 = 86, needed: 20 ms, and: 7 time slices.
+RR TA time for finished p5 = 88, needed: 20 ms, and: 7 time slices.
+RR TA time for finished p11 = 115, needed: 45 ms, and: 15 time slices.
+RR Throughput, 6  p with q: 3, o: 0, is: 0.0522 p/ms, or  52.1739 p/us
+Average RR TA, 6  p with q: 3, o: 0, is: 73.5000 
 
 preemptive RR schedule, quantum = 3 overhead = 1
-RR TA time for finished p2 = 46, needed: 8 ms, and: 3 time slices.
-RR TA time for finished p1 = 60, needed: 10 ms, and: 4 time slices.
-RR TA time for finished p3 = 64, needed: 12 ms, and: 4 time slices.
-RR TA time for finished p4 = 91, needed: 20 ms, and: 7 time slices.
-RR TA time for finished p5 = 94, needed: 20 ms, and: 7 time slices.
-RR Throughput, 5  p with q: 3, o: 1, is: 0.0532 p/ms, or  53.1915 p/us
-Average RR TA, 5  p with q: 3, o: 1, is: 71.0000 
+RR TA time for finished p2 = 54, needed: 8 ms, and: 3 time slices.
+RR TA time for finished p1 = 72, needed: 10 ms, and: 4 time slices.
+RR TA time for finished p3 = 76, needed: 12 ms, and: 4 time slices.
+RR TA time for finished p4 = 115, needed: 20 ms, and: 7 time slices.
+RR TA time for finished p5 = 118, needed: 20 ms, and: 7 time slices.
+RR TA time for finished p11 = 154, needed: 45 ms, and: 15 time slices.
+RR Throughput, 6  p with q: 3, o: 1, is: 0.0390 p/ms, or  38.9610 p/us
+Average RR TA, 6  p with q: 3, o: 1, is: 98.1667 
 
 preemptive RR schedule, quantum = 3 overhead = 2
-RR TA time for finished p2 = 57, needed: 8 ms, and: 3 time slices.
-RR TA time for finished p1 = 75, needed: 10 ms, and: 4 time slices.
-RR TA time for finished p3 = 80, needed: 12 ms, and: 4 time slices.
-RR TA time for finished p4 = 114, needed: 20 ms, and: 7 time slices.
-RR TA time for finished p5 = 118, needed: 20 ms, and: 7 time slices.
-RR Throughput, 5  p with q: 3, o: 2, is: 0.0424 p/ms, or  42.3729 p/us
-Average RR TA, 5  p with q: 3, o: 2, is: 88.8000 
+RR TA time for finished p2 = 67, needed: 8 ms, and: 3 time slices.
+RR TA time for finished p1 = 90, needed: 10 ms, and: 4 time slices.
+RR TA time for finished p3 = 95, needed: 12 ms, and: 4 time slices.
+RR TA time for finished p4 = 144, needed: 20 ms, and: 7 time slices.
+RR TA time for finished p5 = 148, needed: 20 ms, and: 7 time slices.
+RR TA time for finished p11 = 193, needed: 45 ms, and: 15 time slices.
+RR Throughput, 6  p with q: 3, o: 2, is: 0.0311 p/ms, or  31.0881 p/us
+Average RR TA, 6  p with q: 3, o: 2, is: 122.8333 
 
 preemptive RR schedule, quantum = 3 overhead = 3
-RR TA time for finished p2 = 68, needed: 8 ms, and: 3 time slices.
-RR TA time for finished p1 = 90, needed: 10 ms, and: 4 time slices.
-RR TA time for finished p3 = 96, needed: 12 ms, and: 4 time slices.
-RR TA time for finished p4 = 137, needed: 20 ms, and: 7 time slices.
-RR TA time for finished p5 = 142, needed: 20 ms, and: 7 time slices.
-RR Throughput, 5  p with q: 3, o: 3, is: 0.0352 p/ms, or  35.2113 p/us
-Average RR TA, 5  p with q: 3, o: 3, is: 106.6000 
+RR TA time for finished p2 = 80, needed: 8 ms, and: 3 time slices.
+RR TA time for finished p1 = 108, needed: 10 ms, and: 4 time slices.
+RR TA time for finished p3 = 114, needed: 12 ms, and: 4 time slices.
+RR TA time for finished p4 = 173, needed: 20 ms, and: 7 time slices.
+RR TA time for finished p5 = 178, needed: 20 ms, and: 7 time slices.
+RR TA time for finished p11 = 232, needed: 45 ms, and: 15 time slices.
+RR Throughput, 6  p with q: 3, o: 3, is: 0.0259 p/ms, or  25.8621 p/us
+Average RR TA, 6  p with q: 3, o: 3, is: 147.5000 
 
 preemptive RR schedule, quantum = 4 overhead = 0
-RR TA time for finished p2 = 28, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p1 = 42, needed: 10 ms, and: 3 time slices.
-RR TA time for finished p3 = 46, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 66, needed: 20 ms, and: 5 time slices.
-RR TA time for finished p5 = 70, needed: 20 ms, and: 5 time slices.
-RR Throughput, 5  p with q: 4, o: 0, is: 0.0714 p/ms, or  71.4286 p/us
-Average RR TA, 5  p with q: 4, o: 0, is: 50.4000 
+RR TA time for finished p2 = 32, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p1 = 50, needed: 10 ms, and: 3 time slices.
+RR TA time for finished p3 = 54, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 82, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p5 = 86, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p11 = 115, needed: 45 ms, and: 12 time slices.
+RR Throughput, 6  p with q: 4, o: 0, is: 0.0522 p/ms, or  52.1739 p/us
+Average RR TA, 6  p with q: 4, o: 0, is: 69.8333 
 
 preemptive RR schedule, quantum = 4 overhead = 1
-RR TA time for finished p2 = 34, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p1 = 52, needed: 10 ms, and: 3 time slices.
-RR TA time for finished p3 = 57, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 82, needed: 20 ms, and: 5 time slices.
-RR TA time for finished p5 = 87, needed: 20 ms, and: 5 time slices.
-RR Throughput, 5  p with q: 4, o: 1, is: 0.0575 p/ms, or  57.4713 p/us
-Average RR TA, 5  p with q: 4, o: 1, is: 62.4000 
+RR TA time for finished p2 = 39, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p1 = 62, needed: 10 ms, and: 3 time slices.
+RR TA time for finished p3 = 67, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 102, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p5 = 107, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p11 = 144, needed: 45 ms, and: 12 time slices.
+RR Throughput, 6  p with q: 4, o: 1, is: 0.0417 p/ms, or  41.6667 p/us
+Average RR TA, 6  p with q: 4, o: 1, is: 86.8333 
 
 preemptive RR schedule, quantum = 4 overhead = 2
-RR TA time for finished p2 = 40, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p1 = 62, needed: 10 ms, and: 3 time slices.
-RR TA time for finished p3 = 68, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 98, needed: 20 ms, and: 5 time slices.
-RR TA time for finished p5 = 104, needed: 20 ms, and: 5 time slices.
-RR Throughput, 5  p with q: 4, o: 2, is: 0.0481 p/ms, or  48.0769 p/us
-Average RR TA, 5  p with q: 4, o: 2, is: 74.4000 
+RR TA time for finished p2 = 46, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p1 = 74, needed: 10 ms, and: 3 time slices.
+RR TA time for finished p3 = 80, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 122, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p5 = 128, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p11 = 173, needed: 45 ms, and: 12 time slices.
+RR Throughput, 6  p with q: 4, o: 2, is: 0.0347 p/ms, or  34.6821 p/us
+Average RR TA, 6  p with q: 4, o: 2, is: 103.8333 
 
 preemptive RR schedule, quantum = 4 overhead = 3
-RR TA time for finished p2 = 46, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p1 = 72, needed: 10 ms, and: 3 time slices.
-RR TA time for finished p3 = 79, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 114, needed: 20 ms, and: 5 time slices.
-RR TA time for finished p5 = 121, needed: 20 ms, and: 5 time slices.
-RR Throughput, 5  p with q: 4, o: 3, is: 0.0413 p/ms, or  41.3223 p/us
-Average RR TA, 5  p with q: 4, o: 3, is: 86.4000 
+RR TA time for finished p2 = 53, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p1 = 86, needed: 10 ms, and: 3 time slices.
+RR TA time for finished p3 = 93, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 142, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p5 = 149, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p11 = 202, needed: 45 ms, and: 12 time slices.
+RR Throughput, 6  p with q: 4, o: 3, is: 0.0297 p/ms, or  29.7030 p/us
+Average RR TA, 6  p with q: 4, o: 3, is: 120.8333 
 
 preemptive RR schedule, quantum = 4 overhead = 4
-RR TA time for finished p2 = 52, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p1 = 82, needed: 10 ms, and: 3 time slices.
-RR TA time for finished p3 = 90, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 130, needed: 20 ms, and: 5 time slices.
-RR TA time for finished p5 = 138, needed: 20 ms, and: 5 time slices.
-RR Throughput, 5  p with q: 4, o: 4, is: 0.0362 p/ms, or  36.2319 p/us
-Average RR TA, 5  p with q: 4, o: 4, is: 98.4000 
+RR TA time for finished p2 = 60, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p1 = 98, needed: 10 ms, and: 3 time slices.
+RR TA time for finished p3 = 106, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 162, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p5 = 170, needed: 20 ms, and: 5 time slices.
+RR TA time for finished p11 = 231, needed: 45 ms, and: 12 time slices.
+RR Throughput, 6  p with q: 4, o: 4, is: 0.0260 p/ms, or  25.9740 p/us
+Average RR TA, 6  p with q: 4, o: 4, is: 137.8333 
 
 preemptive RR schedule, quantum = 5 overhead = 0
-RR TA time for finished p1 = 30, needed: 10 ms, and: 2 time slices.
-RR TA time for finished p2 = 33, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p3 = 50, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 65, needed: 20 ms, and: 4 time slices.
-RR TA time for finished p5 = 70, needed: 20 ms, and: 4 time slices.
-RR Throughput, 5  p with q: 5, o: 0, is: 0.0714 p/ms, or  71.4286 p/us
-Average RR TA, 5  p with q: 5, o: 0, is: 49.6000 
+RR TA time for finished p1 = 35, needed: 10 ms, and: 2 time slices.
+RR TA time for finished p2 = 38, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p3 = 60, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 80, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p5 = 85, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p11 = 115, needed: 45 ms, and: 9 time slices.
+RR Throughput, 6  p with q: 5, o: 0, is: 0.0522 p/ms, or  52.1739 p/us
+Average RR TA, 6  p with q: 5, o: 0, is: 68.8333 
 
 preemptive RR schedule, quantum = 5 overhead = 1
-RR TA time for finished p1 = 35, needed: 10 ms, and: 2 time slices.
-RR TA time for finished p2 = 39, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p3 = 60, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 78, needed: 20 ms, and: 4 time slices.
-RR TA time for finished p5 = 84, needed: 20 ms, and: 4 time slices.
-RR Throughput, 5  p with q: 5, o: 1, is: 0.0595 p/ms, or  59.5238 p/us
-Average RR TA, 5  p with q: 5, o: 1, is: 59.2000 
+RR TA time for finished p1 = 41, needed: 10 ms, and: 2 time slices.
+RR TA time for finished p2 = 45, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p3 = 72, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 96, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p5 = 102, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p11 = 138, needed: 45 ms, and: 9 time slices.
+RR Throughput, 6  p with q: 5, o: 1, is: 0.0435 p/ms, or  43.4783 p/us
+Average RR TA, 6  p with q: 5, o: 1, is: 82.3333 
 
 preemptive RR schedule, quantum = 5 overhead = 2
-RR TA time for finished p1 = 40, needed: 10 ms, and: 2 time slices.
-RR TA time for finished p2 = 45, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p3 = 70, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 91, needed: 20 ms, and: 4 time slices.
-RR TA time for finished p5 = 98, needed: 20 ms, and: 4 time slices.
-RR Throughput, 5  p with q: 5, o: 2, is: 0.0510 p/ms, or  51.0204 p/us
-Average RR TA, 5  p with q: 5, o: 2, is: 68.8000 
+RR TA time for finished p1 = 47, needed: 10 ms, and: 2 time slices.
+RR TA time for finished p2 = 52, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p3 = 84, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 112, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p5 = 119, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p11 = 161, needed: 45 ms, and: 9 time slices.
+RR Throughput, 6  p with q: 5, o: 2, is: 0.0373 p/ms, or  37.2671 p/us
+Average RR TA, 6  p with q: 5, o: 2, is: 95.8333 
 
 preemptive RR schedule, quantum = 5 overhead = 3
-RR TA time for finished p1 = 45, needed: 10 ms, and: 2 time slices.
-RR TA time for finished p2 = 51, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p3 = 80, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 104, needed: 20 ms, and: 4 time slices.
-RR TA time for finished p5 = 112, needed: 20 ms, and: 4 time slices.
-RR Throughput, 5  p with q: 5, o: 3, is: 0.0446 p/ms, or  44.6429 p/us
-Average RR TA, 5  p with q: 5, o: 3, is: 78.4000 
+RR TA time for finished p1 = 53, needed: 10 ms, and: 2 time slices.
+RR TA time for finished p2 = 59, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p3 = 96, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 128, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p5 = 136, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p11 = 184, needed: 45 ms, and: 9 time slices.
+RR Throughput, 6  p with q: 5, o: 3, is: 0.0326 p/ms, or  32.6087 p/us
+Average RR TA, 6  p with q: 5, o: 3, is: 109.3333 
 
 preemptive RR schedule, quantum = 5 overhead = 4
-RR TA time for finished p1 = 50, needed: 10 ms, and: 2 time slices.
-RR TA time for finished p2 = 57, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p3 = 90, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 117, needed: 20 ms, and: 4 time slices.
-RR TA time for finished p5 = 126, needed: 20 ms, and: 4 time slices.
-RR Throughput, 5  p with q: 5, o: 4, is: 0.0397 p/ms, or  39.6825 p/us
-Average RR TA, 5  p with q: 5, o: 4, is: 88.0000 
+RR TA time for finished p1 = 59, needed: 10 ms, and: 2 time slices.
+RR TA time for finished p2 = 66, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p3 = 108, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 144, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p5 = 153, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p11 = 207, needed: 45 ms, and: 9 time slices.
+RR Throughput, 6  p with q: 5, o: 4, is: 0.0290 p/ms, or  28.9855 p/us
+Average RR TA, 6  p with q: 5, o: 4, is: 122.8333 
 
 preemptive RR schedule, quantum = 5 overhead = 5
-RR TA time for finished p1 = 55, needed: 10 ms, and: 2 time slices.
-RR TA time for finished p2 = 63, needed: 8 ms, and: 2 time slices.
-RR TA time for finished p3 = 100, needed: 12 ms, and: 3 time slices.
-RR TA time for finished p4 = 130, needed: 20 ms, and: 4 time slices.
-RR TA time for finished p5 = 140, needed: 20 ms, and: 4 time slices.
-RR Throughput, 5  p with q: 5, o: 5, is: 0.0357 p/ms, or  35.7143 p/us
-Average RR TA, 5  p with q: 5, o: 5, is: 97.6000 
+RR TA time for finished p1 = 65, needed: 10 ms, and: 2 time slices.
+RR TA time for finished p2 = 73, needed: 8 ms, and: 2 time slices.
+RR TA time for finished p3 = 120, needed: 12 ms, and: 3 time slices.
+RR TA time for finished p4 = 160, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p5 = 170, needed: 20 ms, and: 4 time slices.
+RR TA time for finished p11 = 230, needed: 45 ms, and: 9 time slices.
+RR Throughput, 6  p with q: 5, o: 5, is: 0.0261 p/ms, or  26.0870 p/us
+Average RR TA, 6  p with q: 5, o: 5, is: 136.3333 
 
 <><> end preemptive RR schedule <><>

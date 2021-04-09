@@ -146,18 +146,12 @@ public class Scheduler {
               total_time+=overhead;
               rr_queue.enQueue(curr_proc);             //put the process back into the queue at the rear
             }
-        }
-          //total_time-=overhead;//decrease the total time to account for the extra context switch at the end
+        }    
         double average_rr= get_average(sum_wait_time,size);
         double throughput_rr=  calc_throughput((total_time-overhead),size);
-      //  System.out.println("Total time Elapsed "+ total_time);
  
          output.printf("RR Throughput, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f p/ms, or  %.4f p/us",throughput_rr ,(throughput_rr *1000)  );
-         System.out.printf("\nRR Throughput, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f p/ms, or  %.4f p/us",throughput_rr ,(throughput_rr *1000)  );
-
          output.printf("\nAverage RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f \n", average_rr);
-         System.out.printf("\nAverage RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f \n ", average_rr);
-
       }
 
       public static void print_queue(LinkedList<Process> queue, PrintWriter output, char mode )
@@ -207,8 +201,6 @@ public class Scheduler {
     public int compare(Process p1, Process p2)
      { return p1.priority - p2.priority ;
       } } );
-
-      System.out.println("LinkedList (after sorting by priorty): " + queue);
       return queue;
 }
 
