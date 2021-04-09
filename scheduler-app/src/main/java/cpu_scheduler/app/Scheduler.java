@@ -4,8 +4,6 @@ import java.util.*;
 import cpu_scheduler.Circular_Queue;
 
 public class Scheduler {
-  
-  
       public static int get_wait(LinkedList<Process> queue, PrintWriter output, char mode ) {
       String schedule_type="null";
       int total_wait=0;
@@ -84,6 +82,29 @@ public class Scheduler {
             return num_procs/total_wait ;
       }
 
+      public  void RoundRobin_Schedular(LinkedList<Process> queue, PrintWriter output){
+        int quantum=5;
+        int overhead=0;
+        for(int q=1 ; q <= quantum; ++q)
+        {
+            for( overhead=0; overhead<=q; ++overhead)
+            {
+              System.out.println("preemptive RR schedule, quantum = "+q+ " overhead = "+ overhead);
+              output.println("preemptive RR schedule, quantum = "+q+ " overhead = "+ overhead);
+              //call the copy constructor 
+              Circular_Queue rr_queue =  copy_queue(queue);
+              //call the robin robin
+              RoundRobin(queue,output, q,overhead,rr_queue);
+              System.out.println();
+              output.println();
+             
+            }
+            System.out.println();
+        }
+        System.out.println( "<><> end preemptive RR schedule <><>");
+        output.println( "<><> end preemptive RR schedule <><>");
+      }
+
       public static  Circular_Queue copy_queue(LinkedList<Process> queue )
       {
         System.out.println("Given queue.size() is: "+ queue.size());
@@ -101,7 +122,7 @@ public class Scheduler {
         return rr_queue;
       }
 
-      public  void RoundRobin(LinkedList<Process> queue, PrintWriter output, int quantum,  int overhead, Circular_Queue rr_queue)
+      private  void RoundRobin(LinkedList<Process> queue, PrintWriter output, int quantum,  int overhead, Circular_Queue rr_queue)
       {
         System.out.println("Entered Round Robin");
         int total_time=0; 
@@ -109,8 +130,8 @@ public class Scheduler {
         int size= queue.size();
         RR_Process curr_proc;
 
-        output.println();
-        output.println("preemptive RR schedule, quantum = "+ quantum  + " overhead " + overhead );
+       // output.println();
+       // output.println("preemptive RR schedule, quantum = "+ quantum  + " overhead " + overhead );
        // LinkedList<RR_Process>rr_queue =  copy_queue(queue);
         while(!rr_queue.is_empty())
         {
@@ -143,23 +164,27 @@ public class Scheduler {
             else{
               ++ curr_proc.timeslices;                 //the process has used a time slice
               total_time += quantum;
-              System.out.println("Total time for proc: "+ curr_proc.id + " is "+ total_time);
+              //System.out.println("Total time for proc: "+ curr_proc.id + " is "+ total_time);
               curr_proc.time_left-=quantum;
 
               total_time+=overhead;
               System.out.println("Total time for proc: "+ curr_proc.id + " after overhead is "+ total_time);
              // System.out.println("Curr size before enqueue : "+rr_queue.get_curr_size());
               rr_queue.enQueue(curr_proc);             //put the process back into the queue at the rear
-              System.out.println("\n After re-enqueue");
              // System.out.println("Curr proc: "+ curr_proc.id );
              // System.out.println("Curr size after enqueue : "+rr_queue.get_curr_size());
             }
         }
           //total_time-=overhead;//decrease the total time to account for the extra context switch at the end
         double average_rr= get_average(sum_wait_time,size);
-        
-         output.printf("\nAverage RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f ", average_rr);
-         System.out.printf("\nAverage RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f  ", average_rr);
+        double throughput_rr=  calc_throughput((total_time-overhead),size);
+      //  System.out.println("Total time Elapsed "+ total_time);
+ 
+         output.printf("RR Throughput, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f p/ms, or  %.4f p/us",throughput_rr ,(throughput_rr *1000)  );
+         System.out.printf("\nRR Throughput, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f p/ms, or  %.4f p/us",throughput_rr ,(throughput_rr *1000)  );
+
+         output.printf("\nAverage RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f \n", average_rr);
+         System.out.printf("\nAverage RR TA, "+ size + "  p with q: "+ quantum+ ", o: "+overhead + ", is: %.4f \n ", average_rr);
 
       }
 
