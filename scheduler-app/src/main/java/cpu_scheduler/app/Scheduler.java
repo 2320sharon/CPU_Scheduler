@@ -11,6 +11,21 @@ public class Scheduler {
 
   }*/
 
+  public static void get_HPF_schedule(LinkedList<Process> queue, PrintWriter output, char mode){
+    
+    LinkedList<Process> sorted_queue=new LinkedList<>();
+      sorted_queue = sort_queue(queue);//need to put this cpu_schedule
+    //call print_queue() first to print the queue entered by the user
+     print_queue(sorted_queue,output,'h');
+     //call the get_wait function to print wait times after printing the queues
+     get_wait(sorted_queue,output,'h');
+     //call turn aorund time () to print the turn around for FCFS
+     get_turn_around_time(sorted_queue,output,'h');
+     //call turn aorund time () to print the throughput for FCFS
+     get_throughput(sorted_queue,output,'h');
+
+   }
+
   public static void get_FCHS_schedule(LinkedList<Process> queue, PrintWriter output, char mode){
    
    //call print_queue() first to print the queue entered by the user
@@ -30,9 +45,8 @@ public class Scheduler {
       int sum_wait=0;
 
        if(mode == 'f')//FCFS scheduling wait
-         schedule_type= "fcfs";
-       else
-       schedule_type= "hpf";
+        {
+           schedule_type= "fcfs";
 
            for(int i =0; i< queue.size() ; ++i)
            {
@@ -43,7 +57,21 @@ public class Scheduler {
                total_wait += queue.get(i).time;         //increase the waiting time each time a process completes
              }
            }
-    
+        }
+       else
+       {
+        schedule_type= "hpf";
+
+        for(int i =0; i< queue.size() ; ++i)
+        {
+          output.println(schedule_type +" wait of p "+ queue.get(i).id + " = " + total_wait );
+          sum_wait += total_wait;
+          if (i != (queue.size()-1) )              //Do not want to include the last wait time.
+          { 
+            total_wait += queue.get(i).time;         //increase the waiting time each time a process completes
+          }
+        }
+       }
            double average_wait =get_average((double)sum_wait,queue.size());
            output.printf("average wait time for " + queue.size() + " procs = %.4f \n", average_wait);
            return sum_wait;
