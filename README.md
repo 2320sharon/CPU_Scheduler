@@ -10,6 +10,9 @@ In the program you enter the name of a text file with the processes you want to 
 The real input files you submit should not include anything other than the process id, computation time, and priority, in this exact order.
 ![](images/CPU%20scheduler%20images/sample_input.JPG)
 
+### Unit Testing 
+In the scheduler-app/src/test/java/cpu_scheduler/app/SchedulerTest.java you can see the unit and integration testing that was done for this project.
+
 ### Output
 The program will create an output .txt file with the  name you specified in the program's home directory. The output will show how the processes would be scheduled for Highest Priority First, First Come First Server, and Round Robin.
 ![](images/CPU%20scheduler%20images/output1.JPG)
